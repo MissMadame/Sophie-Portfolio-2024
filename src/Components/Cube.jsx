@@ -50,7 +50,7 @@ scene.add( cube );
 
 camera.position.z = 50;
 
-function animate() {
+function animate(time) {
 	requestAnimationFrame( animate );
 
 	if (planetMesh) {
@@ -58,8 +58,8 @@ function animate() {
 		planetMesh.rotation.x += 0.01*(Math.PI/4);
     }
 
-	cube.rotation.x += 0.001;
-	cube.rotation.y += 0.001;
+	cube.rotation.x = time * 0.001;
+	cube.rotation.y = time * 0.001;
 
 	renderer.render( scene, camera );
 }
