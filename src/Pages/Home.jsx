@@ -1,5 +1,5 @@
 import React from "react";
-import Cube from "../Components/Cube.jsx";
+import Eyeball from "../Components/Eyeball.jsx";
 
 function Home() {
   return (
@@ -8,7 +8,7 @@ function Home() {
         {" "}
         I am Alice lol{" "}
       </h1>
-      <Cube />
+      <Eyeball />
     </div>
   );
 }
