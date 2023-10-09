@@ -1,5 +1,5 @@
 import React from "react";
-import Eyeball from "../Components/Eyeball.jsx";
+import wave from "../Components/wave.jsx";
 
 function Home() {
   return (
@@ -8,7 +8,7 @@ function Home() {
         {" "}
         I am Alice lol{" "}
       </h1>
-      <Eyeball />
+      <wave />
     </div>
   );
 }
