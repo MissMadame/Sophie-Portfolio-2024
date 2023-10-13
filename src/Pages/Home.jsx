@@ -1,15 +1,15 @@
-import React from "react";
-import wave from "../Components/wave.jsx";
+import React, { Suspense } from "react";
+
+const Mountain = React.lazy(() => import("../Components/Mountain.jsx"));
 
 function Home() {
   return (
     <div>
-      <h1 className="bg-green-300 border-green-600 border-b p-4 m-4 rounded">
-        {" "}
-        I am Alice lol{" "}
-      </h1>
-      <wave />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Mountain />
+      </Suspense>
     </div>
   );
 }
+
 export default Home;
