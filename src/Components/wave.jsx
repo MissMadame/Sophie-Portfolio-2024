@@ -8,23 +8,51 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 function vertexShader() {
   return `
       uniform float u_time; 
-      varying vec4 modelViewPosition; 
-      varying vec3 vecNormal;
-      vec4 result; 
       varying vec2 vUv;
       varying vec3 vColor;
-  
+
+      float rand (vec2 uv) {
+        return fract(sin(dot(uv.xy, vec2(12.9898, 78.233))) * 43758.5453123);
+    }
+    
+    float value_noise (vec2 uv) {
+        vec2 ipos = floor(uv);
+        vec2 fpos = fract(uv); 
+        
+        float o  = rand(ipos);
+        float x  = rand(ipos + vec2(1, 0));
+        float y  = rand(ipos + vec2(0, 1));
+        float xy = rand(ipos + vec2(1, 1));
+        
+        vec2 smoothNumber = smoothstep(vec2(0), vec2(1), fpos);
+        return mix( mix(o,  x, smoothNumber.x), 
+                     mix(y, xy, smoothNumber.x), smoothNumber.y);
+    }
+    
+    float fbm (vec2 uv) {
+        float value = 0.0;
+        float amplitude = 0.5;
+        float frequency = 0.0;
+        // Loop of octaves
+        for (int i = 0; i < 10; i++) {
+            value += amplitude * value_noise(uv) ;
+            uv *= 2.0; // lacunarity
+            amplitude *= 0.5; // gain
+        }
+        return value; 
+    }
+    
+
       void main() {
-        vUv = uv; 
-        vColor = color;
-        vec4 result = vec4(position, 1.0);
-        result.y = result.y+ 10.0*cos(result.z / 4.0 + u_time * 4.0) * 0.2;
-        result.x = result.x+ 5.0*sin(result.x * 0.5 + u_time*4.0 ) * 0.2;
-        result.z = result.z+ 10.0*sin(result.y * 0.5 + u_time*4.0 ) * 0.2;
-        vecNormal = (modelViewMatrix * vec4(normal, 0.0)).xyz; 
-        gl_Position = projectionMatrix * modelViewMatrix * result; 
-      }
-    `;
+        float scale = 0.75; 
+        float displacement =30.0; 
+        vUv = uv ;
+        vec3 pos = position;
+        float fn = fbm(vec2(vUv.y * 0.3*u_time * scale),(vUv.y * scale)) ; // uv value at the vertex position
+        pos.z +=  fn * displacement; // make sure it is always up
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+    }
+  `;
 }
 
 function FragmentShader() {
@@ -73,6 +101,16 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
+window.addEventListener(
+  "resize",
+  function () {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  },
+  false
+);
+
 //camera orbit controls
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.target.set(0, -3, 0);
@@ -83,8 +121,7 @@ const axesHelper = new THREE.AxesHelper(40);
 scene.add(axesHelper);
 
 // Create a Three.js geometry
-const geometry = new THREE.BoxGeometry(24, 4, 24, 24, 4, 24);
-
+const geometry = new THREE.PlaneGeometry(100, 100, 24, 24);
 // Create a Three.js material
 let material = new THREE.ShaderMaterial({
   uniforms: uniformData,
@@ -112,4 +149,4 @@ function wave() {
   );
 }
 
-export default wave;
+export default Wave;
