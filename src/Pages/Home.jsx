@@ -18,6 +18,7 @@ function Home() {
           <Label />
         </div>
       </div>
+      <div className="w-full h-auto bg-black"></div>
     </div>
   );
 }
