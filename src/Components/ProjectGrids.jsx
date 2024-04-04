@@ -1,4 +1,6 @@
 import React from "react";
+import { useEffect } from "react";
+import sanityClient from "./client";
 
 const projects = [
   {
@@ -42,6 +44,15 @@ const scrollTo = (direction) => {
 };
 
 const ProjectGrids = ({ selectedLabels }) => {
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const query = `*[_type == "project"]`;
+      const projects = await sanityClient.fetch(query);
+      console.log(projects);
+    };
+    fetchProjects();
+  }, []);
+
   return (
     <div className="mx-[10vw] mt-[5vh] text-sm text-white flex flex-wrap justify-center gap-x-[10vw] gap-y-[5vh] pt-20 pb-16">
       {projects
