@@ -1,39 +1,6 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import sanityClient from "./client";
-
-const projects = [
-  {
-    title: "Dynamic Illustrations",
-    labels: ["#Illustration", "#Motion Graphics"],
-    imagePath: "https://picsum.photos/seed/picsum/200/300",
-  },
-  {
-    title: "Modern Website Design",
-    labels: ["#website Design"],
-    imagePath: "https://picsum.photos/seed/picsum/201/301",
-  },
-  {
-    title: "Creative Poster Collection",
-    labels: ["#Poster", "#Collection"],
-    imagePath: "https://picsum.photos/seed/picsum/202/302",
-  },
-  {
-    title: "Innovative Packaging Designs",
-    labels: ["#Packaging", "#Design"],
-    imagePath: "https://picsum.photos/seed/picsum/203/303",
-  },
-  {
-    title: "Publication Layout Concepts",
-    labels: ["#Publication", "#Design"],
-    imagePath: "https://picsum.photos/seed/picsum/204/304",
-  },
-  {
-    title: "Complex Pattern Creations",
-    labels: ["#Patterns", "#Art"],
-    imagePath: "https://picsum.photos/seed/picsum/205/305",
-  },
-];
 
 const scrollTo = (direction) => {
   const height = window.innerHeight;
@@ -44,11 +11,19 @@ const scrollTo = (direction) => {
 };
 
 const ProjectGrids = ({ selectedLabels }) => {
+  const [projects, setProjects] = useState([]);
+
   useEffect(() => {
     const fetchProjects = async () => {
-      const query = `*[_type == "project"]`;
-      const projects = await sanityClient.fetch(query);
-      console.log(projects);
+      const query = `*[_type == "project"] {
+        title,
+        slug,
+        "mainImageUrl": mainImage.asset->url,
+        labels
+      }
+      `;
+      const fetchedProjects = await sanityClient.fetch(query);
+      setProjects(fetchedProjects);
     };
     fetchProjects();
   }, []);
@@ -61,18 +36,19 @@ const ProjectGrids = ({ selectedLabels }) => {
             selectedLabels.length === 0 ||
             project.labels.some((label) => selectedLabels.includes(label))
         )
+
         .map((project, index) => (
           <div
             key={index}
             className="bg-transparent overflow-hidden w-64 h-auto"
           >
             <img
-              src={project.imagePath}
+              src={project.mainImageUrl}
               alt={project.title}
               className="w-64 h-64 object-cover object-center"
             />
             <div className="my-[1vh]">
-              <h3 className="uppercase font-bold underline">{project.title}</h3>
+              <h3 className="uppercase font-bold ">{project.title}</h3>
               <div className="text-sm flex flex-wrap underline">
                 {project.labels.map((label, labelIndex) => (
                   <span key={labelIndex} className="mr-2">

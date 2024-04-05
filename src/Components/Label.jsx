@@ -33,12 +33,13 @@ const Label = ({ onLabelClick }) => {
             "Poster",
             "Publication",
             "Illustration",
-            "Patterns",
-            "Motion Graphics",
+            "Pattern",
+            "Motion Graphic",
             "Information Design",
             "Collection",
             "website Design",
             "Packaging",
+            "Editorial",
           ].map((label, index) => (
             <p
               key={index}
