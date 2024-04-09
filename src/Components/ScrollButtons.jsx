@@ -34,7 +34,7 @@ const ScrollButtons = () => {
         {/* Scroll Up Button */}
         <button
           aria-label="Scroll Up"
-          className="p-2 text-white rounded-full"
+          className="p-2 text-white rounded-full text-4xl"
           onClick={() => scrollTo("up")}
         >
           ↑
@@ -43,7 +43,7 @@ const ScrollButtons = () => {
         {/* Scroll Down Button */}
         <button
           aria-label="Scroll Down"
-          className="p-2 text-white rounded-full"
+          className="p-2 text-white rounded-full text-4xl"
           onClick={() => scrollTo("down")}
         >
           ↓

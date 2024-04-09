@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* src/assets/fonts/fonts.css */
+@font-face {
+  font-family: "Bugrino-Regular";
+  src: url("/font/Bugrino-Regular.woff") format("woff"); /* Adjust the path based on where you placed your font files */
+  font-weight: normal;
+  font-style: normal;
+}

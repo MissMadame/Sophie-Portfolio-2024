@@ -25,7 +25,7 @@ const Label = ({ onLabelClick }) => {
   };
 
   return (
-    <div className="flex flex-wrap mx-[10vw] text-white font-bold text-xs">
+    <div className="flex flex-wrap mx-[10vw] text-black font-bold text-xs">
       <div className="w-full flex flex-row justify-left space-x-[5vw] mt-[2vh]">
         {/* First column */}
         <div className="justify-left w-64">
@@ -37,17 +37,17 @@ const Label = ({ onLabelClick }) => {
             "Motion Graphic",
             "Information Design",
             "Collection",
-            "website Design",
+            "Website Design",
             "Packaging",
             "Editorial",
           ].map((label, index) => (
             <p
               key={index}
-              className="underline cursor-pointer"
+              className="underline cursor-pointer mt-2"
               onClick={() => handleLabelClick("#" + label)} // Use handleLabelClick for interaction
             >
               <span
-                className={`${clickedLabels.includes("#" + label) ? "bg-white text-black px-1" : ""} hover:bg-white hover:text-black hover:px-1`}
+                className={`${clickedLabels.includes("#" + label) ? "bg-black text-white px-1" : ""} hover:bg-black hover:text-white hover:px-1`}
               >
                 #{label}
               </span>
@@ -56,15 +56,13 @@ const Label = ({ onLabelClick }) => {
         </div>
         {/* Second column, adjust accordingly if needed */}
         <div className="justify-left w-64">
-          {["EMAIL", "INSTAGRAM", "RESUME", "LINKEDIN"].map((label, index) => (
+          {["Email", "Instagram", "Resume", "Linkedin"].map((label, index) => (
             <p
               key={index}
-              className="underline cursor-pointer"
+              className="underline cursor-pointer mt-2"
               onClick={() => handleLabelClick(label)} // Use handleLabelClick for interaction
             >
-              <span
-                className={`${clickedLabels.includes(label) ? "bg-white text-black px-1" : ""} hover:bg-white hover:text-black hover:px-1`}
-              >
+              <span className={`hover:bg-black hover:text-white hover:px-1`}>
                 {label}
               </span>
             </p>

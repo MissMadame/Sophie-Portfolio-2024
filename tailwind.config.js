@@ -6,6 +6,9 @@ export default {
       height: {
         "1/2-screen": "90vh",
       },
+      fontFamily: {
+        BugrinoRegular: ["Bugrino-Regular", "sans-serif"], // Use a fallback font like 'sans-serif'
+      },
     },
   },
   plugins: [require("@tailwindcss/aspect-ratio")],
