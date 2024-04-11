@@ -14,7 +14,7 @@ const ProjectPage = () => {
         date,
         "mainImageUrl": mainImage.asset->url,
         "otherImagesUrls": otherImages[].asset->url,
-        "video": video.asset->url, // Include the video URL in the query
+        "video": video[].asset->url, // Change "video" to "videos" and make it an array
       }`;
       const fetchedProject = await sanityClient.fetch(query, { slug });
       setProject(fetchedProject);
@@ -46,15 +46,15 @@ const ProjectPage = () => {
         </div>
 
         {/* need to be mp4 */}
-        {project.video && (
-          <div className="mt-[1vh] video-container">
-            <video controls className="w-full">
-              <source src={project.video} type="video/mp4" />
-              Your browser does not support this video format.
-            </video>
-          </div>
-        )}
-
+        {project.video &&
+          project.video.map((vi, index) => (
+            <div key={index} className="mt-[1vh] video-container">
+              <video controls className="w-full">
+                <source src={vi} type="video/mp4" />
+                Your browser does not support this video format.
+              </video>
+            </div>
+          ))}
         {/* Display other images */}
         {project.otherImagesUrls?.map((url, index) => (
           <div key={index} className="mt-[1vh]">

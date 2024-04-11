@@ -37,9 +37,10 @@ export default defineType({
     }),
     defineField({
       name: 'video',
-      title: 'Video',
-      type: 'file',
-      description: 'Upload a video file (mp4 recommended)',
+      title: 'video',
+      type: 'array',
+      of: [{type: 'file'}],
+      description: 'Upload video files (mp4 recommended)',
       options: {
         accept: 'video/*',
       },

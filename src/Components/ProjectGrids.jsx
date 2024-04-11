@@ -24,7 +24,7 @@ const ProjectGrids = ({ selectedLabels }) => {
   }, []);
 
   return (
-    <div className="mx-[10vw] mt-[5vh] text-sm  text-black flex flex-wrap justify-center gap-x-[10vw] gap-y-[5vh] pt-20 pb-16">
+    <div className="px-[10vw] pt-[5vh] text-sm text-black flex flex-wrap justify-center gap-x-[10vw] gap-y-[5vh] ">
       {projects
         .filter(
           (project) =>
@@ -32,20 +32,19 @@ const ProjectGrids = ({ selectedLabels }) => {
             project.labels.some((label) => selectedLabels.includes(label))
         )
         .map((project, index) => (
-          <div
-            key={index}
-            className="bg-transparent overflow-hidden w-64 h-auto"
-          >
-            <Link to={`/project/${project.slug.current}`} className="block">
-              <img
-                src={project.mainImageUrl}
-                alt={project.title}
-                className="w-64 h-64 object-cover object-center hover-effect" // Apply the custom class here
-              />
-              <h3 className=" pt-2 font-BugrinoBold block">{project.title}</h3>
+          <div key={index} className="bg-transparent overflow-hidden w-72 ">
+            <Link to={`/project/${project.slug.current}`}>
+              <div className="image-container">
+                {" "}
+                {/* Use the new CSS class */}
+                <img src={project.mainImageUrl} alt={project.title} />
+              </div>
+              <h3 className="pt-2 pl-3 font-BugrinoBold block">
+                {project.title}
+              </h3>
             </Link>
             <div className="my-[1vh]">
-              <div className="text-sm flex flex-wrap underline">
+              <div className="text-sm flex flex-wrap underline pl-3 ">
                 {project.labels.map((label, labelIndex) => (
                   <span key={labelIndex} className="mr-2">
                     {label}
