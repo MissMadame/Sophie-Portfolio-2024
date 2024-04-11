@@ -17,7 +17,7 @@ function Home() {
     <GradientWrapper>
       {" "}
       {/* Wrap the entire content with GradientWrapper */}
-      <div className="bg-black font-BugrinoRegular">
+      <div className=" font-BugrinoRegular">
         <div className="relative w-full h-1/2-screen flex flex-col">
           {/* Gradient is now part of GradientWrapper, so no need to include it here */}
           <Header />
@@ -28,7 +28,7 @@ function Home() {
             />
           </div>
         </div>
-        <div className="w-full h-auto bg-black">
+        <div className="w-full h-auto bg-white">
           <ScrollButtons />
           <ProjectGrids selectedLabels={selectedLabels} />
         </div>

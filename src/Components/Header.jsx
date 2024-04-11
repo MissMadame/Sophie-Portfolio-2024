@@ -10,9 +10,21 @@ const Header = () => {
         {/* Adjust margin left to emulate column start, using vw units for responsiveness */}
         <p className="Blend">Hi, I am Sophie Feng.</p>
         <p className="Blend">
-          I am currently studying at Rhode Island School of Design,
+          I am currently pursuing BFA in{" "}
+          <span className="font-BugrinoBold cursor-pointer">
+            <a
+              href="https://www.risd.edu/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Rhode Island School of Design
+            </a>
+          </span>
+          ,
         </p>
-        <p className="Blend">pursuing Graphic Design and Illustration.</p>
+        <p className="Blend">
+          pursuing BFA in Graphic Design and Illustration.
+        </p>
       </div>
       {/* Repeat for other sections, adjusting marginLeft as needed */}
       <div className="w-full flex flex-row justify-left space-x-[5vw] mt-[10vw]">

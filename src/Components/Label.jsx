@@ -3,6 +3,19 @@ import React, { useState } from "react";
 const Label = ({ onLabelClick }) => {
   // State to track multiple clicked labels
   const [clickedLabels, setClickedLabels] = useState([]);
+  const contactLinks = [
+    { label: "Email", link: "mailto: sophiefeng0117@gmail.com" },
+    { label: "Instagram", link: "https://www.instagram.com/sophiefeng_art/" },
+    {
+      label: "Resume",
+      link: "https://drive.google.com/file/d/1lx0gQpt_NsF4YF0ip-ZFBm6U7aXcsJWJ/view?usp=sharing",
+    },
+    {
+      label: "LinkedIn",
+      link: "https://www.linkedin.com/in/sophie-feng-25a618301/",
+    },
+    // Add more items as needed
+  ];
 
   const handleLabelClick = (label) => {
     const isLabelSelected = clickedLabels.includes(label);
@@ -56,14 +69,12 @@ const Label = ({ onLabelClick }) => {
         </div>
         {/* Second column, adjust accordingly if needed */}
         <div className="justify-left w-64">
-          {["Email", "Instagram", "Resume", "Linkedin"].map((label, index) => (
-            <p
-              key={index}
-              className="underline cursor-pointer mt-2"
-              onClick={() => handleLabelClick(label)} // Use handleLabelClick for interaction
-            >
+          {contactLinks.map((item, index) => (
+            <p key={index} className="underline cursor-pointer mt-2">
               <span className={`hover:bg-black hover:text-white hover:px-1`}>
-                {label}
+                <a href={item.link} target="_blank" rel="noopener noreferrer">
+                  {item.label}
+                </a>
               </span>
             </p>
           ))}

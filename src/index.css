@@ -9,3 +9,9 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "Bugrino-Bold";
+  src: url("/font/Bugrino-Bold.woff") format("woff"); /* Adjust the path based on where you placed your font files */
+  font-weight: normal;
+  font-style: normal;
+}

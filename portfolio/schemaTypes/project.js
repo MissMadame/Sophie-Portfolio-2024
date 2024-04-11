@@ -50,6 +50,14 @@ export default defineType({
       type: 'array',
       of: [{type: 'string'}],
     }),
+
+    defineField({
+      name: 'date',
+      title: 'Date',
+      type: 'text',
+      description: 'Provide date of the project',
+    }),
+
     defineField({
       name: 'description',
       title: 'Description',

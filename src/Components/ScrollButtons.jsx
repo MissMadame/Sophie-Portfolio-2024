@@ -26,15 +26,15 @@ const ScrollButtons = () => {
 
   return (
     <div
-      className={`${isTop ? "relative" : "fixed top-0 bg-black"} w-full z-20`}
+      className={`${isTop ? "relative" : "fixed top-0 bg-black text-white"} w-full z-20`}
       style={{ left: 0, right: 0 }}
     >
-      <div className="mx-[10vw] flex justify-between text-lg">
+      <div className="mx-[10vw] flex justify-between ">
         {/* Adjust padding as needed to control the banner's height and the buttons' spacing */}
         {/* Scroll Up Button */}
         <button
           aria-label="Scroll Up"
-          className="p-2 text-white rounded-full text-4xl"
+          className="p-2 text-white rounded-full text-5xl"
           onClick={() => scrollTo("up")}
         >
           ↑
@@ -43,7 +43,7 @@ const ScrollButtons = () => {
         {/* Scroll Down Button */}
         <button
           aria-label="Scroll Down"
-          className="p-2 text-white rounded-full text-4xl"
+          className="p-2 text-black rounded-full text-5xl"
           onClick={() => scrollTo("down")}
         >
           ↓

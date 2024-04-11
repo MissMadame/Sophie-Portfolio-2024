@@ -11,6 +11,7 @@ const ProjectPage = () => {
       const query = `*[_type == "project" && slug.current == $slug][0] {
         title,
         description,
+        date,
         "mainImageUrl": mainImage.asset->url,
         "otherImagesUrls": otherImages[].asset->url,
         "video": video.asset->url, // Include the video URL in the query
@@ -27,7 +28,7 @@ const ProjectPage = () => {
 
   console.log(project);
   return (
-    <div className="container mx-auto px-[10vw] py-[5vh] bg-black text-white text-lg font-BugrinoRegular">
+    <div className="container mx-auto px-[10vw] py-[5vh] bg-white text-black text-lg font-BugrinoRegular">
       <div className="pb-[5vh] text-4xl">
         <Link to="/" className="cursor-pointer">
           ←
@@ -36,7 +37,8 @@ const ProjectPage = () => {
       <div className="px-[5vw] pb-[5vh]">
         <div className="flex flex-col md:flex-row gap-4 pb-[2vh]">
           <div className="w-full md:w-1/2">
-            <h1 className="font-bold mb-4">{project.title}</h1>
+            <h1 className="font-BugrinoBold mb-4">{project.title}</h1>
+            <h1 className="font-BugrinoRegular mb-4">{project.date}</h1>
           </div>
           <div className="w-full md:w-1/2 md:text-left">
             <p className="text-lg">{project.description}</p>

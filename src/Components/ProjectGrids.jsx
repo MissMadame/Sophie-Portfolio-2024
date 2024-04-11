@@ -24,7 +24,7 @@ const ProjectGrids = ({ selectedLabels }) => {
   }, []);
 
   return (
-    <div className="mx-[10vw] mt-[5vh] text-sm text-white flex flex-wrap justify-center gap-x-[10vw] gap-y-[5vh] pt-20 pb-16">
+    <div className="mx-[10vw] mt-[5vh] text-sm  text-black flex flex-wrap justify-center gap-x-[10vw] gap-y-[5vh] pt-20 pb-16">
       {projects
         .filter(
           (project) =>
@@ -42,9 +42,7 @@ const ProjectGrids = ({ selectedLabels }) => {
                 alt={project.title}
                 className="w-64 h-64 object-cover object-center hover-effect" // Apply the custom class here
               />
-              <h3 className="uppercase pt-2 font-bold block">
-                {project.title}
-              </h3>
+              <h3 className=" pt-2 font-BugrinoBold block">{project.title}</h3>
             </Link>
             <div className="my-[1vh]">
               <div className="text-sm flex flex-wrap underline">

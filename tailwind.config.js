@@ -8,6 +8,7 @@ export default {
       },
       fontFamily: {
         BugrinoRegular: ["Bugrino-Regular", "sans-serif"], // Use a fallback font like 'sans-serif'
+        BugrinoBold: ["Bugrino-Bold", "sans-serif"], // Use a fallback font like 'sans-serif'
       },
     },
   },
