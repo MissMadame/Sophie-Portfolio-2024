@@ -56,11 +56,11 @@ const Label = ({ onLabelClick }) => {
           ].map((label, index) => (
             <p
               key={index}
-              className="underline cursor-pointer mt-2"
+              className="underline  mt-2"
               onClick={() => handleLabelClick("#" + label)} // Use handleLabelClick for interaction
             >
               <span
-                className={`${clickedLabels.includes("#" + label) ? "bg-black text-white px-1" : ""} hover:bg-black hover:text-white hover:px-1`}
+                className={`${clickedLabels.includes("#" + label) ? "bg-black text-white px-1" : ""} hover:bg-black hover:text-white hover:px-1 hover:cursor-customHover`}
               >
                 #{label}
               </span>
@@ -68,11 +68,16 @@ const Label = ({ onLabelClick }) => {
           ))}
         </div>
         {/* Second column, adjust accordingly if needed */}
-        <div className="justify-left w-64">
+        <div className="justify-left w-64 ">
           {contactLinks.map((item, index) => (
-            <p key={index} className="underline cursor-pointer mt-2">
-              <span className={`hover:bg-black hover:text-white hover:px-1`}>
-                <a href={item.link} target="_blank" rel="noopener noreferrer">
+            <p key={index} className="underline mt-2">
+              <span className="hover:bg-black hover:text-white hover:px-1 ">
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:cursor-customHover"
+                >
                   {item.label}
                 </a>
               </span>

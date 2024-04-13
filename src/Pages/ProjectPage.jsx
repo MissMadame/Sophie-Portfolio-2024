@@ -69,7 +69,7 @@ const ProjectPage = () => {
     <div className="flex flex-col md:flex-row px-[6vw] py-[5vh] font-BugrinoRegular">
       <div className="w-full md:w-1/4 md:fixed md:h-screen overflow-auto ">
         <div className="text-5xl mb-4">
-          <Link to="/" className="cursor-pointer">
+          <Link to="/" className="hover:cursor-customHover">
             ←
           </Link>
         </div>
@@ -77,7 +77,7 @@ const ProjectPage = () => {
           {prevProject && (
             <Link
               to={`/project/${prevProject.slug}`}
-              className=" hover:bg-black hover:text-white hover:px-1`"
+              className=" hover:bg-black hover:text-white hover:px-1 hover:cursor-customHover"
             >
               Previous Projects
             </Link>
@@ -85,7 +85,7 @@ const ProjectPage = () => {
           {nextProject && (
             <Link
               to={`/project/${nextProject.slug}`}
-              className=" hover:bg-black hover:text-white hover:px-1`"
+              className=" hover:bg-black hover:text-white hover:px-1 hover:cursor-customHover"
             >
               Next Projects
             </Link>

@@ -11,11 +11,12 @@ const Header = () => {
         <p>Hi, I am Sophie Feng.</p>
         <p>
           I am currently pursuing BFA in{" "}
-          <span className="font-BugrinoBold cursor-pointer">
+          <span className="hover:bg-black hover:text-white hover:px-1 ">
             <a
               href="https://www.risd.edu/"
               target="_blank"
               rel="noopener noreferrer"
+              className="hover:cursor-customHover"
             >
               Rhode Island School of Design
             </a>

@@ -8,6 +8,7 @@ const Footer = () => {
         href="https://gunesmuhittin.com/bugrino/"
         target="_blank"
         rel="noopener noreferrer"
+        className="hover:cursor-customHover"
         style={{ color: "inherit", textDecoration: "underline" }}
         onMouseOver={(e) => {
           e.target.style.color = "white";

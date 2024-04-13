@@ -28,7 +28,7 @@ const ScrollButtons = () => {
     <div className="mx-[10vw]">
       <button
         aria-label="Scroll Down"
-        className="rounded-full text-6xl text-black"
+        className="rounded-full text-6xl text-black hover:cursor-customHover"
         onClick={() => scrollTo("down")}
       >
         ↓

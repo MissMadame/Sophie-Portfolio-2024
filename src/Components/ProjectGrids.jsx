@@ -37,9 +37,13 @@ const ProjectGrids = ({ selectedLabels }) => {
               <div className="image-container">
                 {" "}
                 {/* Use the new CSS class */}
-                <img src={project.mainImageUrl} alt={project.title} />
+                <img
+                  src={project.mainImageUrl}
+                  alt={project.title}
+                  className="hover:cursor-customHover"
+                />
               </div>
-              <h3 className="pt-2 pl-3 font-BugrinoBold block">
+              <h3 className="pt-2 pl-3 font-BugrinoBold block hover:cursor-customHover">
                 {project.title}
               </h3>
             </Link>
