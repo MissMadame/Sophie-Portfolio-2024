@@ -24,7 +24,7 @@ const ProjectGrids = ({ selectedLabels }) => {
   }, []);
 
   return (
-    <div className="px-[10vw] pt-[5vh] text-sm text-black flex flex-wrap justify-center gap-x-[10vw] gap-y-[5vh] ">
+    <div className="px-[10vw] pt-[5vh] text-sm text-black flex flex-wrap justify-left gap-x-[10vw] gap-y-[5vh] ">
       {projects
         .filter(
           (project) =>
@@ -43,14 +43,13 @@ const ProjectGrids = ({ selectedLabels }) => {
                 {project.title}
               </h3>
             </Link>
-            <div className="my-[1vh]">
-              <div className="text-sm flex flex-wrap underline pl-3 ">
-                {project.labels.map((label, labelIndex) => (
-                  <span key={labelIndex} className="mr-2">
-                    {label}
-                  </span>
-                ))}
-              </div>
+
+            <div className="text-sm flex flex-wrap pl-3 ">
+              {project.labels.map((label, labelIndex) => (
+                <span key={labelIndex} className="mr-2">
+                  {label}
+                </span>
+              ))}
             </div>
           </div>
         ))}

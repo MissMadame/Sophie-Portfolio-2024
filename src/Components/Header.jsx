@@ -8,8 +8,8 @@ const Header = () => {
       {/* Center content with margin auto and use viewport width for sizing */}
       <div className="w-full lg:w-4/5  flex flex-col justify-left ">
         {/* Adjust margin left to emulate column start, using vw units for responsiveness */}
-        <p className="Blend">Hi, I am Sophie Feng.</p>
-        <p className="Blend">
+        <p>Hi, I am Sophie Feng.</p>
+        <p>
           I am currently pursuing BFA in{" "}
           <span className="font-BugrinoBold cursor-pointer">
             <a
@@ -22,19 +22,17 @@ const Header = () => {
           </span>
           ,
         </p>
-        <p className="Blend">
-          pursuing BFA in Graphic Design and Illustration.
-        </p>
+        <p>pursuing BFA in Graphic Design and Illustration.</p>
       </div>
       {/* Repeat for other sections, adjusting marginLeft as needed */}
       <div className="w-full flex flex-row justify-left space-x-[5vw] mt-[10vw]">
         {/* First column */}
         <div className="justify-left w-64">
-          <p className="Blend">I am working on ↓</p>
+          <p>I am working on ↓</p>
         </div>
         {/* Second column */}
         <div className="justify-left w-64">
-          <p className="Blend">Here is my ↓</p>
+          <p>Here is my ↓</p>
         </div>
       </div>
     </div>

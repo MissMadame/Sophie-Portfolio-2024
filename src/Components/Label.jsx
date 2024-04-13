@@ -38,7 +38,7 @@ const Label = ({ onLabelClick }) => {
   };
 
   return (
-    <div className="flex flex-wrap mx-[10vw] text-black font-bold text-xs">
+    <div className="flex flex-wrap mx-[10vw] text-black font-regular text-xs">
       <div className="w-full flex flex-row justify-left space-x-[5vw] mt-[2vh]">
         {/* First column */}
         <div className="justify-left w-64">

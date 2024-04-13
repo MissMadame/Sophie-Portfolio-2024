@@ -5,6 +5,7 @@ import Label from "../Components/Label.jsx";
 import ProjectGrids from "../Components/ProjectGrids";
 import ScrollButtons from "../Components/ScrollButtons";
 import GradientWrapper from "../Components/GradientWrapper"; // Adjust the path as necessary
+import Footer from "../Components/Footer"; // Adjust the path as necessary
 
 function Home() {
   const [selectedLabels, setSelectedLabels] = useState([]);
@@ -31,6 +32,7 @@ function Home() {
         <div className="w-full h-auto bg-white">
           <ScrollButtons />
           <ProjectGrids selectedLabels={selectedLabels} />
+          <Footer />
         </div>
       </div>
     </GradientWrapper>
