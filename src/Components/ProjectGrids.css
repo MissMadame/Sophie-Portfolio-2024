@@ -6,7 +6,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px; /* Adjusted padding to provide more space for the shadow */
   background-color: #fff; /* Optional: background color */
 }
 
@@ -14,4 +13,25 @@
   width: 100%; /* This ensures the image still covers the full container */
   height: 100%;
   object-fit: cover;
+}
+
+/* CSS for enhancing the fade-in effect with a blur transition */
+.fade-in {
+  animation: fadeInBlur 1s ease-in forwards;
+}
+
+@keyframes fadeInBlur {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* Pulsate effect for placeholders */
+.react-lazy-load-image-placeholder {
+  animation: pulsate 2s ease-in-out infinite;
 }

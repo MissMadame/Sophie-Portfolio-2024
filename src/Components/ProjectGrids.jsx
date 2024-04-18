@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
-import sanityClient from "./client";
 import { Link } from "react-router-dom";
 import Loading from "./Loading";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import sanityClient from "./client";
+import imageUrlBuilder from "@sanity/image-url";
 import "./ProjectGrids.css";
 
-// Assume placeholder.png is a lightweight, generic image stored in your public folder
-const placeholderImage = "/loading.gif";
+// Setup the builder
+const builder = imageUrlBuilder(sanityClient);
+function urlFor(source) {
+  return builder.image(source).width(100).height(100).quality(5).url();
+}
 
 const ProjectGrids = ({ selectedLabels }) => {
   const [projects, setProjects] = useState([]);
@@ -46,19 +50,20 @@ const ProjectGrids = ({ selectedLabels }) => {
                   <div className="image-container outline-block hover:cursor-customHover hover:border-2 border-black">
                     <LazyLoadImage
                       alt={project.title}
-                      effect="blur"
                       src={project.mainImageUrl}
-                      placeholderSrc={project.mainImageUrl} // Use generic placeholder
+                      placeholderSrc={project.mainImageUrl} // Use generated low-quality image URL
+                      effect="blur"
                       onError={(e) => {
-                        e.target.src = placeholderImage;
-                      }} // Fallback to placeholder if the image fails to load
+                        e.target.src = "/path/to/fallback-image.jpg"; // Specify a fallback image if needed
+                      }}
+                      className="fade-in"
                     />
                   </div>
-                  <h3 className="pt-2 pl-3 font-BugrinoBold block hover:cursor-customHover">
+                  <h3 className="pt-2 font-BugrinoBold block hover:cursor-customHover">
                     {project.title}
                   </h3>
                 </Link>
-                <div className="text-sm flex flex-wrap pl-3">
+                <div className="text-sm flex flex-wrap ">
                   {project.labels.map((label, labelIndex) => (
                     <span key={labelIndex} className="mr-2">
                       {label}
