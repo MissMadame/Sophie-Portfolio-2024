@@ -8,17 +8,10 @@
   align-items: center;
   padding: 15px; /* Adjusted padding to provide more space for the shadow */
   background-color: #fff; /* Optional: background color */
-  transition: box-shadow 0.3s ease-in-out;
 }
 
 .image-container img {
   width: 100%; /* This ensures the image still covers the full container */
   height: 100%;
   object-fit: cover;
-  transition: box-shadow 0.3s ease-in-out;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0);
-}
-
-.image-container img:hover {
-  box-shadow: 0 0 15px 5px rgba(149, 149, 149, 0.75); /* Glow effect on hover */
 }
