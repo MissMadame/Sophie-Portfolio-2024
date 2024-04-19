@@ -26,7 +26,7 @@ const Label = ({ onLabelClick }) => {
   };
 
   return (
-    <div className="flex flex-wrap mx-[10vw] text-black font-regular text-base">
+    <div className="flex flex-wrap mx-[10vw] text-black text-base">
       <div className="w-full flex flex-row justify-left space-x-[10vw] mt-[2vh]">
         {/* First column for hashtags */}
         <div className="justify-left w-64">

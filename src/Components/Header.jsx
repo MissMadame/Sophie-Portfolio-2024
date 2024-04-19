@@ -4,7 +4,7 @@ import "./Header.css"; // Make sure this path is correct
 const Header = () => {
   return (
     // This div takes up 50% of the viewport height
-    <div className="flex flex-wrap mx-[10vw] mt-[5vh] text-black font-bold text-lg">
+    <div className="flex flex-wrap mx-[10vw] mt-[5vh] text-black text-lg">
       {/* Center content with margin auto and use viewport width for sizing */}
       <div className="w-full ">
         {/* Adjust margin left to emulate column start, using vw units for responsiveness */}
