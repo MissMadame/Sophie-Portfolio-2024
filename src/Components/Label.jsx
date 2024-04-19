@@ -39,7 +39,7 @@ const Label = ({ onLabelClick }) => {
               "Motion",
               "Collection",
               "UI Design",
-              "Packaging",
+              "branding",
               "Editorial",
             ].map((label, index) => (
               <span

@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import sanityClient from "../Components/client";
 import LoadingComponent from "../Components/Loading";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import Gradient from "../Components/Gradient";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 const ProjectPage = () => {
@@ -68,56 +69,67 @@ const ProjectPage = () => {
   }
 
   return (
-    <div className="flex flex-col md:flex-row px-[6vw] py-[5vh] font-BugrinoRegular">
-      <div className="w-full md:w-1/4 md:fixed md:h-screen overflow-auto ">
-        <div className="text-base mb-4">
-          <Link to="/" className="hover:cursor-customHover text-lg">
-            ←
-          </Link>
-        </div>
-        <div className="flex items-start underline gap-5 ">
-          {prevProject && (
-            <Link
-              to={`/project/${prevProject.slug}`}
-              className=" hover:bg-black hover:text-white hover:px-1 hover:cursor-customHover"
-            >
-              Previous Projects
-            </Link>
-          )}
-          {nextProject && (
-            <Link
-              to={`/project/${nextProject.slug}`}
-              className=" hover:bg-black hover:text-white hover:px-1 hover:cursor-customHover"
-            >
-              Next Projects
-            </Link>
-          )}
-        </div>
-        <h1 className="font-BugrinoBold mt-[10vh] text-lg">{project.title}</h1>
-        <h1 className="mb-4">{project.date}</h1>
-        <p className="text-lg">{project.description}</p>
+    <div className="w-full h-auto bg-white">
+      <div className="w-full h-[6vh] overflow-hidden relative">
+        <Gradient style={{ position: "absolute", bottom: 10 }} />
       </div>
-      <div className="w-full md:w-8/12 md:ml-[40%] overflow-auto ">
-        {project.video &&
-          project.video.map((vi, index) => (
-            <div key={index} className="mt-[1vh] video-container">
-              <video controls className="w-full">
-                <source src={vi} type="video/mp4" />
-                Your browser does not support this video format.
-              </video>
+
+      <div className="flex flex-col md:flex-row px-[6vw] py-[5vh] font-BugrinoRegular">
+        <div className="w-full md:w-1/4 md:fixed md:h-screen overflow-auto ">
+          <div className="text-base mb-4">
+            <Link to="/" className="hover:cursor-customHover text-lg">
+              ←
+            </Link>
+          </div>
+          <div className="flex items-start underline gap-5 ">
+            {prevProject && (
+              <Link
+                to={`/project/${prevProject.slug}`}
+                className=" hover:bg-black hover:text-white hover:px-1 hover:cursor-customHover"
+              >
+                Previous Projects
+              </Link>
+            )}
+            {nextProject && (
+              <Link
+                to={`/project/${nextProject.slug}`}
+                className=" hover:bg-black hover:text-white hover:px-1 hover:cursor-customHover"
+              >
+                Next Projects
+              </Link>
+            )}
+          </div>
+          <h1 className="font-BugrinoBold mt-[10vh] text-lg ">
+            {project.title}
+          </h1>
+          <h1 className="mb-4 text-lg ">{project.date}</h1>
+          <p className="text-lg">{project.description}</p>
+        </div>
+        <div className="w-full md:w-8/12 md:ml-[40%] overflow-auto ">
+          {project.video &&
+            project.video.map((vi, index) => (
+              <div key={index} className="mt-[1vh] video-container">
+                <video controls className="w-full">
+                  <source src={vi} type="video/mp4" />
+                  Your browser does not support this video format.
+                </video>
+              </div>
+            ))}
+          {project.otherImagesUrls?.map((url, index) => (
+            <div key={index} className="mt-[1vh]">
+              <LazyLoadImage
+                src={url}
+                alt={`Detail ${index}`}
+                effect="blur"
+                className="w-full object-cover fade-in"
+                placeholderSrc={url} // Use generated low-quality image URL
+              />
             </div>
           ))}
-        {project.otherImagesUrls?.map((url, index) => (
-          <div key={index} className="mt-[1vh]">
-            <LazyLoadImage
-              src={url}
-              alt={`Detail ${index}`}
-              effect="blur"
-              className="w-full object-cover fade-in"
-              placeholderSrc={url} // Use generated low-quality image URL
-            />
-          </div>
-        ))}
+        </div>
+      </div>
+      <div className="w-full h-[6vh] overflow-hidden relative">
+        <Gradient style={{ position: "absolute", bottom: 10 }} />
       </div>
     </div>
   );
