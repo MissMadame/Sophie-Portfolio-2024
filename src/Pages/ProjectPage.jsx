@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import sanityClient from "../Components/client";
 import LoadingComponent from "../Components/Loading";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const ProjectPage = () => {
   const [project, setProject] = useState(null);
@@ -68,8 +70,8 @@ const ProjectPage = () => {
   return (
     <div className="flex flex-col md:flex-row px-[6vw] py-[5vh] font-BugrinoRegular">
       <div className="w-full md:w-1/4 md:fixed md:h-screen overflow-auto ">
-        <div className="text-5xl mb-4">
-          <Link to="/" className="hover:cursor-customHover">
+        <div className="text-base mb-4">
+          <Link to="/" className="hover:cursor-customHover text-lg">
             ←
           </Link>
         </div>
@@ -91,9 +93,9 @@ const ProjectPage = () => {
             </Link>
           )}
         </div>
-        <h1 className="font-BugrinoBold mt-[10vh]">{project.title}</h1>
+        <h1 className="font-BugrinoBold mt-[10vh] text-lg">{project.title}</h1>
         <h1 className="mb-4">{project.date}</h1>
-        <p className="text-sm">{project.description}</p>
+        <p className="text-lg">{project.description}</p>
       </div>
       <div className="w-full md:w-8/12 md:ml-[40%] overflow-auto ">
         {project.video &&
@@ -107,10 +109,12 @@ const ProjectPage = () => {
           ))}
         {project.otherImagesUrls?.map((url, index) => (
           <div key={index} className="mt-[1vh]">
-            <img
+            <LazyLoadImage
               src={url}
               alt={`Detail ${index}`}
-              className="w-full object-cover"
+              effect="blur"
+              className="w-full object-cover fade-in"
+              placeholderSrc={url} // Use generated low-quality image URL
             />
           </div>
         ))}

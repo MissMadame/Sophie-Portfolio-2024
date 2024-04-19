@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="mx-[10vw] text-sm text-black mt-[20vh]  mb-[10vh]">
+    <div className="mx-[10vw] text-base text-black mt-[20vh]  mb-[10vh]">
       (*^ ‿ ⁢*) Typeset in{" "}
       <a
         href="https://gunesmuhittin.com/bugrino/"

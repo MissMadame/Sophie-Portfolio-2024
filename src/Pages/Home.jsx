@@ -4,7 +4,7 @@ import Header from "../Components/Header";
 import Label from "../Components/Label.jsx";
 import ProjectGrids from "../Components/ProjectGrids";
 import ScrollButtons from "../Components/ScrollButtons";
-import GradientWrapper from "../Components/GradientWrapper"; // Adjust the path as necessary
+import Gradient from "../Components/Gradient"; // Adjust the path as necessary
 import Footer from "../Components/Footer"; // Adjust the path as necessary
 
 function Home() {
@@ -15,27 +15,24 @@ function Home() {
   };
 
   return (
-    <GradientWrapper>
-      {" "}
-      {/* Wrap the entire content with GradientWrapper */}
-      <div className=" font-BugrinoRegular">
-        <div className="relative w-full h-1/2-screen flex flex-col">
-          {/* Gradient is now part of GradientWrapper, so no need to include it here */}
-          <Header />
-          <div className="flex-grow z-50">
-            <Label
-              onLabelClick={handleLabelClick}
-              selectedLabels={selectedLabels}
-            />
-          </div>
+    <div className="font-BugrinoRegular">
+      <div className="w-full h-auto bg-white">
+        <div className="w-full h-[6vh] overflow-hidden relative">
+          <Gradient style={{ position: "absolute", bottom: 10 }} />
         </div>
-        <div className="w-full h-auto bg-white">
-          <ScrollButtons />
-          <ProjectGrids selectedLabels={selectedLabels} />
-          <Footer />
+        <Header />
+        <Label
+          onLabelClick={handleLabelClick}
+          selectedLabels={selectedLabels}
+        />
+        <ScrollButtons />
+        <ProjectGrids selectedLabels={selectedLabels} />
+        <Footer />
+        <div className="w-full h-[6vh] overflow-hidden relative">
+          <Gradient style={{ position: "absolute", bottom: 10 }} />
         </div>
       </div>
-    </GradientWrapper>
+    </div>
   );
 }
 

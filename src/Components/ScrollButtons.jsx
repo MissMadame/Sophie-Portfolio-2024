@@ -25,10 +25,10 @@ const ScrollButtons = () => {
   }, []);
 
   return (
-    <div className="mx-[10vw]">
+    <div className="mx-[10vw] mt-[5vh]">
       <button
         aria-label="Scroll Down"
-        className="rounded-full text-6xl text-black hover:cursor-customHover"
+        className="rounded-full text-lg text-black hover:cursor-customHover"
         onClick={() => scrollTo("down")}
       >
         ↓

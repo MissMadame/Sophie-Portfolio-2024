@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       height: {
-        "1/2-screen": "90vh",
+        "1/2-screen": "50vh",
       },
       fontFamily: {
         BugrinoRegular: ["Bugrino-Regular", "sans-serif"], // Use a fallback font like 'sans-serif'

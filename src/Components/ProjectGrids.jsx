@@ -37,7 +37,7 @@ const ProjectGrids = ({ selectedLabels }) => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="px-[12vw] pt-[5vh] text-sm text-black flex flex-wrap justify-center gap-x-[8vw] gap-y-[5vh]">
+        <div className="mx-[10vw] pt-[5vh] text-lg text-black flex flex-wrap justify-between gap-y-[5vh]">
           {projects
             .filter(
               (project) =>
@@ -45,9 +45,9 @@ const ProjectGrids = ({ selectedLabels }) => {
                 selectedLabels.every((label) => project.labels.includes(label))
             )
             .map((project, index) => (
-              <div key={index} className="bg-transparent overflow-hidden w-72">
+              <div key={index} className="bg-transparent w-80 ">
                 <Link to={`/project/${project.slug.current}`}>
-                  <div className="image-container outline-block hover:cursor-customHover hover:border-2 border-black">
+                  <div className="image-container hover:cursor-customHover hover:border-2 border-black">
                     <LazyLoadImage
                       alt={project.title}
                       src={project.mainImageUrl}
@@ -59,13 +59,20 @@ const ProjectGrids = ({ selectedLabels }) => {
                       className="fade-in"
                     />
                   </div>
-                  <h3 className="pt-2 font-BugrinoBold block hover:cursor-customHover">
+                  <h3
+                    className="pt-2 font-BugrinoBold block hover:cursor-customHover"
+                    style={{ lineHeight: "1.5" }}
+                  >
                     {project.title}
                   </h3>
                 </Link>
-                <div className="text-sm flex flex-wrap ">
+                <div className="text-lg flex flex-wrap ">
                   {project.labels.map((label, labelIndex) => (
-                    <span key={labelIndex} className="mr-2">
+                    <span
+                      key={labelIndex}
+                      className="mr-2 "
+                      style={{ lineHeight: "1.5" }}
+                    >
                       {label}
                     </span>
                   ))}

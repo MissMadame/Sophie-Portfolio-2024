@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const Label = ({ onLabelClick }) => {
-  // State to track multiple clicked labels
   const [clickedLabels, setClickedLabels] = useState([]);
   const contactLinks = [
     { label: "Email", link: "mailto: sophiefeng0117@gmail.com" },
@@ -14,73 +13,57 @@ const Label = ({ onLabelClick }) => {
       label: "LinkedIn",
       link: "https://www.linkedin.com/in/sophie-feng-25a618301/",
     },
-    // Add more items as needed
   ];
 
   const handleLabelClick = (label) => {
     const isLabelSelected = clickedLabels.includes(label);
-    if (isLabelSelected) {
-      // If label is already selected, remove it from the clickedLabels array
-      setClickedLabels(
-        clickedLabels.filter((selectedLabel) => selectedLabel !== label)
-      );
-    } else {
-      // If label is not selected, add it to the clickedLabels array
-      setClickedLabels([...clickedLabels, label]);
-    }
+    const updatedClickedLabels = isLabelSelected
+      ? clickedLabels.filter((selectedLabel) => selectedLabel !== label)
+      : [...clickedLabels, label];
 
-    // Update the selection in parent component accordingly
-    isLabelSelected
-      ? onLabelClick(
-          clickedLabels.filter((selectedLabel) => selectedLabel !== label)
-        )
-      : onLabelClick([...clickedLabels, label]);
+    setClickedLabels(updatedClickedLabels);
+    onLabelClick(updatedClickedLabels);
   };
 
   return (
-    <div className="flex flex-wrap mx-[10vw] text-black font-regular text-xs">
-      <div className="w-full flex flex-row justify-left space-x-[5vw] mt-[2vh]">
-        {/* First column */}
+    <div className="flex flex-wrap mx-[10vw] text-black font-regular text-base">
+      <div className="w-full flex flex-row justify-left space-x-[10vw] mt-[2vh]">
+        {/* First column for hashtags */}
         <div className="justify-left w-64">
-          {[
-            "Poster",
-            "Publication",
-            "Illustration",
-            "Pattern",
-            "Motion Graphic",
-            "Information Design",
-            "Collection",
-            "Website Design",
-            "Packaging",
-            "Editorial",
-          ].map((label, index) => (
-            <p
-              key={index}
-              className="underline  mt-2"
-              onClick={() => handleLabelClick("#" + label)} // Use handleLabelClick for interaction
-            >
+          <p className="flex flex-wrap items-center">
+            {[
+              "Poster",
+              "Publication",
+              "Illustration",
+              "Pattern",
+              "Motion Graphic",
+              "Collection",
+              "Website Design",
+              "Packaging",
+              "Editorial",
+            ].map((label, index) => (
               <span
-                className={`${clickedLabels.includes("#" + label) ? "bg-black text-white px-1" : ""} hover:bg-black hover:text-white hover:px-1 hover:cursor-customHover`}
+                key={index}
+                onClick={() => handleLabelClick("#" + label)}
+                className={`mt-1 mx-1 underline ${clickedLabels.includes("#" + label) ? "bg-black text-white px-1" : "hover:bg-black hover:text-white hover:px-1 hover:cursor-customHover"}`}
               >
                 #{label}
               </span>
-            </p>
-          ))}
+            ))}
+          </p>
         </div>
-        {/* Second column, adjust accordingly if needed */}
-        <div className="justify-left w-64 ">
+        {/* Second column for contact links */}
+        <div className="justify-left w-64">
           {contactLinks.map((item, index) => (
-            <p key={index} className="underline mt-2">
-              <span className="hover:bg-black hover:text-white hover:px-1 ">
-                <a
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:cursor-customHover"
-                >
-                  {item.label}
-                </a>
-              </span>
+            <p key={index} className="mt-1 mx-1">
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:bg-black hover:text-white hover:px-1 hover:cursor-customHover"
+              >
+                {item.label}
+              </a>
             </p>
           ))}
         </div>

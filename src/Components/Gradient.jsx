@@ -9,9 +9,8 @@ function Gradient() {
     <ShaderGradientCanvas
       importedFiber={{ ...fiber, ...drei, ...reactSpring }}
       style={{
-        position: "absolute",
-        top: 0,
-        height: "90vh",
+        bottom: 10,
+        height: "100vh",
       }}
     >
       <ShaderGradient

@@ -1,8 +1,8 @@
 /* ProjectGrids.css */
 .image-container {
-  width: 288px; /* Increased from 256px */
-  height: 288px; /* Increased from 256px */
-  overflow: visible;
+  width: 320px; /* Increased from 256px */
+  height: 320px; /* Increased from 256px */
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,25 +10,28 @@
 }
 
 .image-container img {
-  width: 100%; /* This ensures the image still covers the full container */
-  height: 100%;
+  width: 320px; /* Increased from 256px */
+  height: 320px; /* Increased from 256px */
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 4px;
+  padding-right: 4px;
   object-fit: cover;
 }
 
 /* CSS for enhancing the fade-in effect with a blur transition */
-.fade-in {
-  animation: fadeInBlur 1s ease-in forwards;
-}
-
-@keyframes fadeInBlur {
+@keyframes fadeIn {
   0% {
     opacity: 0;
-    filter: blur(10px);
   }
   100% {
     opacity: 1;
-    filter: blur(0);
   }
+}
+
+.fade-in {
+  animation-name: fadeIn;
+  animation-duration: 2s;
 }
 
 /* Pulsate effect for placeholders */
