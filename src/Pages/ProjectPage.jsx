@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import sanityClient from "../Components/client";
 import LoadingComponent from "../Components/Loading";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import Gradient from "../Components/Gradient";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 const ProjectPage = () => {
@@ -24,7 +23,7 @@ const ProjectPage = () => {
           "mainImageUrl": mainImage.asset->url,
           "otherImagesUrls": otherImages[].asset->url,
           "video": video[].asset->url,
-          _createdAt
+          orderRank
         },
       }`;
       const params = { slug };
@@ -38,15 +37,15 @@ const ProjectPage = () => {
   useEffect(() => {
     if (project) {
       const fetchPrevAndNextProjects = async () => {
-        const prevProjectQuery = `*[_type == "project" && _createdAt < $createdAt] | order(_createdAt desc)[0] {
+        const prevProjectQuery = `*[_type == "project" && orderRank < $orderRank] | order(orderRank desc)[0] {
           "slug": slug.current,
           title
         }`;
-        const nextProjectQuery = `*[_type == "project" && _createdAt > $createdAt] | order(_createdAt asc)[0] {
+        const nextProjectQuery = `*[_type == "project" && orderRank > $orderRank] | order(orderRank asc)[0] {
           "slug": slug.current,
           title
         }`;
-        const params = { createdAt: project._createdAt };
+        const params = { orderRank: project.orderRank };
         const prevProjectResult = await sanityClient.fetch(
           prevProjectQuery,
           params
@@ -70,10 +69,6 @@ const ProjectPage = () => {
 
   return (
     <div className="w-full h-auto bg-white">
-      <div className="w-full h-[6vh] overflow-hidden relative">
-        <Gradient style={{ position: "absolute", bottom: 10 }} />
-      </div>
-
       <div className="flex flex-col md:flex-row px-[6vw] py-[5vh] font-BugrinoRegular">
         <div className="w-full md:w-1/4 md:fixed md:h-screen overflow-auto ">
           <div className="text-base mb-4">
@@ -105,31 +100,30 @@ const ProjectPage = () => {
           <h1 className="mb-4 text-lg ">{project.date}</h1>
           <p className="text-lg">{project.description}</p>
         </div>
-        <div className="w-full md:w-8/12 md:ml-[40%] overflow-auto ">
-          {project.video &&
-            project.video.map((vi, index) => (
-              <div key={index} className="mt-[1vh] video-container">
-                <video controls className="w-full">
-                  <source src={vi} type="video/mp4" />
-                  Your browser does not support this video format.
-                </video>
+        <div className=" min-h-screen  w-full md:w-8/12 md:ml-[40%]">
+          <div className=" overflow-auto ">
+            {project.video &&
+              project.video.map((vi, index) => (
+                <div key={index} className="mt-[1vh] video-container">
+                  <video controls className="w-full">
+                    <source src={vi} type="video/mp4" />
+                    Your browser does not support this video format.
+                  </video>
+                </div>
+              ))}
+            {project.otherImagesUrls?.map((url, index) => (
+              <div key={index} className="mt-[1vh]">
+                <LazyLoadImage
+                  src={url}
+                  alt={`Detail ${index}`}
+                  effect="blur"
+                  className="w-full object-cover fade-in"
+                  placeholderSrc={url} // Use generated low-quality image URL
+                />
               </div>
             ))}
-          {project.otherImagesUrls?.map((url, index) => (
-            <div key={index} className="mt-[1vh]">
-              <LazyLoadImage
-                src={url}
-                alt={`Detail ${index}`}
-                effect="blur"
-                className="w-full object-cover fade-in"
-                placeholderSrc={url} // Use generated low-quality image URL
-              />
-            </div>
-          ))}
+          </div>
         </div>
-      </div>
-      <div className="w-full h-[6vh] overflow-hidden relative">
-        <Gradient style={{ position: "absolute", bottom: 10 }} />
       </div>
     </div>
   );

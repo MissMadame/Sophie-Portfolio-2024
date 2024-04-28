@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 
 const AudioPlayer = forwardRef((props, ref) => {
   return (
-    <audio ref={ref} loop controls>
+    <audio ref={ref} loop controls style={{ display: "none" }}>
       <source
         src="The House in Fata Morgana OST - Comical.mp3"
         type="audio/mpeg"
