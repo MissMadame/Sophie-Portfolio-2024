@@ -8,6 +8,8 @@
     "build:css": "npx tailwindcss -i src/index.css -o src/tailwind.css"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@heroicons/react": "^2.0.18",
     "@react-three/drei": "^9.87.0",
     "@react-three/fiber": "^8.16.0",

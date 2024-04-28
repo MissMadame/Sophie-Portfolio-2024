@@ -1,15 +1,17 @@
 import {defineField, defineType} from 'sanity'
+import {orderRankField} from '@sanity/orderable-document-list'
 
 export default defineType({
-  name: 'project', // Use 'project' for better naming convention
+  name: 'project',
   title: 'Project',
   type: 'document',
   fields: [
+    orderRankField({type: 'project'}), // Add this as the first field for easy access
     defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule) => Rule.required(), // Ensure title is required
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'slug',
@@ -25,9 +27,9 @@ export default defineType({
       title: 'Main Image',
       type: 'image',
       options: {
-        hotspot: true, // Allow cropping and resizing
+        hotspot: true,
       },
-      validation: (Rule) => Rule.required(), // Ensure main image is required
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'otherImages',
@@ -37,7 +39,7 @@ export default defineType({
     }),
     defineField({
       name: 'video',
-      title: 'video',
+      title: 'Video',
       type: 'array',
       of: [{type: 'file'}],
       description: 'Upload video files (mp4 recommended)',
@@ -51,14 +53,12 @@ export default defineType({
       type: 'array',
       of: [{type: 'string'}],
     }),
-
     defineField({
       name: 'date',
       title: 'Date',
       type: 'text',
       description: 'Provide date of the project',
     }),
-
     defineField({
       name: 'description',
       title: 'Description',
