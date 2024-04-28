@@ -19,7 +19,7 @@ const ProjectGrids = ({ selectedLabels }) => {
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const query = `*[_type == "project"]{
+      const query = `*[_type == "project"] |order(orderRank){
         title,
         slug,
         "mainImageUrl": mainImage.asset->url,
