@@ -1,41 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { forwardRef } from "react";
 
-function AudioPlayer() {
-  const audioRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false); // Start unmuted
-
-  const handlePlay = () => {
-    if (audioRef.current) {
-      audioRef.current
-        .play()
-        .then(() => {
-          setIsPlaying(true);
-        })
-        .catch((error) => console.error("Audio play failed", error));
-    }
-  };
-
+const AudioPlayer = forwardRef((props, ref) => {
   return (
-    <div>
-      <audio ref={audioRef} loop>
-        <source src="LOVE DIVE.mp3" type="audio/mpeg" />
-        Your browser does not support the audio tag.
-      </audio>
-      {!isPlaying ? (
-        <button onClick={handlePlay}>Play Audio</button>
-      ) : (
-        <button
-          onClick={() => {
-            audioRef.current.muted = !audioRef.current.muted;
-            setIsMuted(!isMuted);
-          }}
-        >
-          {isMuted ? "Unmute" : "Mute"}
-        </button>
-      )}
-    </div>
+    <audio ref={ref} loop controls>
+      <source
+        src="The House in Fata Morgana OST - Comical.mp3"
+        type="audio/mpeg"
+      />
+      Your browser does not support the audio tag.
+    </audio>
   );
-}
+});
 
 export default AudioPlayer;
