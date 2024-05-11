@@ -13,6 +13,7 @@ export default {
       cursor: {
         custom: 'url("/Asset 2mouse regular.svg"), auto',
         customHover: 'url("/Asset 2mouse hover.svg"), auto',
+        musicHover: 'url("/Asset 1music hover.svg"), auto',
       },
     },
   },

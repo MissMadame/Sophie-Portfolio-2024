@@ -27,7 +27,7 @@ function App() {
       <div className="w-full h-auto bg-white">
         <div
           onClick={handleGradientClick}
-          className="w-full h-[6vh] overflow-hidden relative hover:cursor-customHover"
+          className="w-full h-[6vh] overflow-hidden relative hover:cursor-musicHover"
         >
           <Gradient style={{ position: "absolute", top: 0 }} />
         </div>
@@ -40,7 +40,7 @@ function App() {
 
         <div
           onClick={handleGradientClick}
-          className="w-full h-[6vh] overflow-hidden relative hover:cursor-customHover"
+          className="w-full h-[6vh] overflow-hidden relative hover:cursor-musicHover"
         >
           <Gradient style={{ position: "absolute", bottom: 0 }} />
         </div>
