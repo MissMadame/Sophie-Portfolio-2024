@@ -7,7 +7,7 @@ const Label = ({ onLabelClick }) => {
     { label: "Instagram", link: "https://www.instagram.com/sophiefeng_art/" },
     {
       label: "Resume",
-      link: "https://drive.google.com/file/d/1lx0gQpt_NsF4YF0ip-ZFBm6U7aXcsJWJ/view?usp=sharing",
+      link: "https://drive.google.com/file/d/1xwCuzKuBTYUNCGfPbieR-XQ2pl9NbbpN/view?usp=share_link",
     },
     {
       label: "LinkedIn",
