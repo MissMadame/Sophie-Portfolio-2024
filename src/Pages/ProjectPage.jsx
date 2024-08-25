@@ -10,6 +10,7 @@ const ProjectPage = () => {
   const [prevProject, setPrevProject] = useState(null);
   const [nextProject, setNextProject] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [hoverProject, setHoverProject] = useState(null);
   const { slug } = useParams();
 
   useEffect(() => {
@@ -63,6 +64,14 @@ const ProjectPage = () => {
     }
   }, [project]);
 
+  const handleMouseEnter = (project) => {
+    setHoverProject(project);
+  };
+
+  const handleMouseLeave = () => {
+    setHoverProject(null);
+  };
+
   if (isLoading) {
     return <LoadingComponent />;
   }
@@ -70,38 +79,72 @@ const ProjectPage = () => {
   return (
     <div className="w-full h-auto bg-white">
       <div className="flex flex-col md:flex-row px-[6vw] py-[5vh] font-BugrinoRegular">
-        <div className="w-full md:w-1/4 md:fixed md:h-screen overflow-auto ">
+        <div className="w-full md:w-1/4 md:fixed md:h-screen overflow-auto">
           <div className="text-base mb-4">
             <Link to="/" className="hover:cursor-customHover text-lg">
               ←
             </Link>
           </div>
-          <div className="flex items-start underline gap-5 ">
+          <div className="flex justify-between items-start underline gap-5 w-full">
             {prevProject && (
-              <Link
-                to={`/project/${prevProject.slug}`}
-                className=" hover:bg-black hover:text-white hover:px-1 hover:cursor-customHover"
+              <div
+                className="relative flex-grow"
+                onMouseEnter={() => handleMouseEnter(prevProject)}
+                onMouseLeave={handleMouseLeave}
               >
-                Previous Projects
-              </Link>
+                <Link
+                  to={`/project/${prevProject.slug}`}
+                  className="hover:bg-black hover:text-white hover:px-1 hover:cursor-customHover"
+                >
+                  Previous Projects
+                </Link>
+                {hoverProject === prevProject && (
+                  <div
+                    className="absolute left-0 top-full mt-2 text-black text-sm rounded"
+                    style={{
+                      maxWidth: "200px", // Adjust max-width as needed
+                      whiteSpace: "normal", // Allows text to wrap to next line
+                    }}
+                  >
+                    {prevProject.title}
+                  </div>
+                )}
+              </div>
             )}
             {nextProject && (
-              <Link
-                to={`/project/${nextProject.slug}`}
-                className=" hover:bg-black hover:text-white hover:px-1 hover:cursor-customHover"
+              <div
+                className="relative flex-grow"
+                onMouseEnter={() => handleMouseEnter(nextProject)}
+                onMouseLeave={handleMouseLeave}
               >
-                Next Projects
-              </Link>
+                <Link
+                  to={`/project/${nextProject.slug}`}
+                  className="hover:bg-black hover:text-white hover:px-1 hover:cursor-customHover"
+                >
+                  Next Projects
+                </Link>
+                {hoverProject === nextProject && (
+                  <div
+                    className="absolute left-0 top-full mt-2 text-black text-sm rounded"
+                    style={{
+                      maxWidth: "200px", // Adjust max-width as needed
+                      whiteSpace: "normal", // Allows text to wrap to next line
+                    }}
+                  >
+                    {nextProject.title}
+                  </div>
+                )}
+              </div>
             )}
           </div>
-          <h1 className="font-BugrinoBold mt-[10vh] text-lg ">
+          <h1 className="font-BugrinoBold mt-[10vh] text-lg">
             {project.title}
           </h1>
-          <h1 className="mb-4 text-lg ">{project.date}</h1>
+          <h1 className="mb-4 text-lg">{project.date}</h1>
           <p className="text-lg">{project.description}</p>
         </div>
-        <div className=" min-h-screen  w-full md:w-8/12 md:ml-[40%]">
-          <div className=" overflow-auto ">
+        <div className="min-h-screen w-full md:w-8/12 md:ml-[40%]">
+          <div className="overflow-auto">
             {project.video &&
               project.video.map((vi, index) => (
                 <div key={index} className="mt-[1vh] video-container">

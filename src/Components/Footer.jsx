@@ -21,7 +21,7 @@ const Footer = () => {
       >
         Bugrino
       </a>
-      ; Last update on April 2024.
+      ; Last update on August 2024.
     </div>
   );
 };

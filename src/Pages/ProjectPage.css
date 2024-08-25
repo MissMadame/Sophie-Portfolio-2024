@@ -1,0 +1,12 @@
+.project-link::after {
+  content: attr(data-title);
+  display: none;
+}
+
+.project-link:hover::after {
+  display: inline;
+}
+
+.project-link:hover {
+  visibility: hidden;
+}
