@@ -37,7 +37,7 @@ const ProjectGrids = ({ selectedLabels }) => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="mx-[10vw] pt-[5vh] text-lg text-black flex flex-wrap justify-between gap-x-[5vw] gap-y-[5vh]">
+        <div className="mx-[10vw] pt-[5vh] text-lg text-black flex flex-wrap gap-x-[2vw] gap-y-[5vh] justify-around">
           {projects
             .filter(
               (project) =>
