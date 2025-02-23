@@ -73,7 +73,7 @@ const ProjectGrids = ({ selectedLabels }) => {
                       className="mr-2 "
                       style={{ lineHeight: "1.5" }}
                     >
-                      {label}
+                      ✶{label}
                     </span>
                   ))}
                 </div>
