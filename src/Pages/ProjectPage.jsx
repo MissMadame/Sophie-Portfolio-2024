@@ -13,6 +13,11 @@ const ProjectPage = () => {
   const [hoverProject, setHoverProject] = useState(null);
   const { slug } = useParams();
 
+  // Add this useEffect to scroll to the top when slug changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
   useEffect(() => {
     const fetchProjectDetails = async () => {
       setIsLoading(true);
@@ -102,8 +107,8 @@ const ProjectPage = () => {
                   <div
                     className="absolute left-0 top-full mt-2 text-black text-sm rounded"
                     style={{
-                      maxWidth: "200px", // Adjust max-width as needed
-                      whiteSpace: "normal", // Allows text to wrap to next line
+                      maxWidth: "200px",
+                      whiteSpace: "normal",
                     }}
                   >
                     {prevProject.title}
@@ -127,8 +132,8 @@ const ProjectPage = () => {
                   <div
                     className="absolute left-0 top-full mt-2 text-black text-sm rounded"
                     style={{
-                      maxWidth: "200px", // Adjust max-width as needed
-                      whiteSpace: "normal", // Allows text to wrap to next line
+                      maxWidth: "200px",
+                      whiteSpace: "normal",
                     }}
                   >
                     {nextProject.title}
@@ -161,7 +166,7 @@ const ProjectPage = () => {
                   alt={`Detail ${index}`}
                   effect="blur"
                   className="w-full object-cover fade-in"
-                  placeholderSrc={url} // Use generated low-quality image URL
+                  placeholderSrc={url}
                 />
               </div>
             ))}
