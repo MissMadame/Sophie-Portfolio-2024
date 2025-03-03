@@ -4,7 +4,7 @@ const Label = ({ onLabelClick }) => {
   const [clickedLabels, setClickedLabels] = useState([]);
   const contactLinks = [
     { label: "Email", link: "mailto: sophiefeng0117@gmail.com" },
-    { label: "Instagram", link: "https://www.instagram.com/sophiefeng_art/" },
+    { label: "Instagram", link: "https://www.instagram.com/sophie___feng/" },
     {
       label: "Resume",
       link: "https://drive.google.com/file/d/1xwCuzKuBTYUNCGfPbieR-XQ2pl9NbbpN/edit",
