@@ -44,8 +44,12 @@ const Label = ({ onLabelClick }) => {
             ].map((label, index) => (
               <span
                 key={index}
-                onClick={() => handleLabelClick("#" + label)}
-                className={`mt-1 mx-1 underline ${clickedLabels.includes("#" + label) ? "bg-black text-white px-1" : "hover:bg-black hover:text-white hover:px-1 hover:cursor-customHover"}`}
+                onClick={() => handleLabelClick(label)}
+                className={`mt-1 mx-1 underline ${
+                  clickedLabels.includes(label)
+                    ? "bg-black text-white px-1"
+                    : "hover:bg-black hover:text-white hover:px-1 hover:cursor-customHover"
+                }`}
               >
                 ✶{label}
               </span>
