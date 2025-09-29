@@ -32,15 +32,13 @@ const Label = ({ onLabelClick }) => {
         <div className="justify-left w-64">
           <p className="flex flex-wrap items-center">
             {[
+              "Branding"
+              "Motion",
               "Poster",
               "Publication",
               "Illustration",
               "Pattern",
-              "Motion",
               "Collection",
-              "UI Design",
-              "Branding",
-              "Editorial",
             ].map((label, index) => (
               <span
                 key={index}
