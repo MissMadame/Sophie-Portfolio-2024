@@ -9,8 +9,7 @@ const Header = () => {
       <div className="w-full ">
         {/* Adjust margin left to emulate column start, using vw units for responsiveness */}
         <p>
-          Sophie Feng is a graphic designer and illustrator currently studying
-          at{" "}
+          Sophie Feng is a graphic designer and illustrator recently graduated from {" "}
           <span className="hover:bg-black hover:text-white hover:px-1 font-BugrinoBold ">
             <a
               href="https://www.risd.edu/"
@@ -19,6 +18,16 @@ const Header = () => {
               className="hover:cursor-customHover"
             >
               Rhode Island School of Design
+            </a>
+          </span>, currently at  
+          <span className="hover:bg-black hover:text-white hover:px-1 font-BugrinoBold ">
+            <a
+              href="https://2x4.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:cursor-customHover"
+            >
+              2x4 Beijing
             </a>
           </span>
           .
