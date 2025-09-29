@@ -17,9 +17,9 @@ const Header = () => {
               rel="noopener noreferrer"
               className="hover:cursor-customHover"
             >
-              Rhode Island School of Design
+              RISD
             </a>
-          </span>, currently at  
+          </span>, currently at {" "}  
           <span className="hover:bg-black hover:text-white hover:px-1 font-BugrinoBold ">
             <a
               href="https://2x4.org"
